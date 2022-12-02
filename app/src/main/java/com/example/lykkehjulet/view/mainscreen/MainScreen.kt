@@ -94,7 +94,7 @@ private fun PlayGame(
     ) {
         Icon(
             painter = painterResource(id = R.drawable.controller),
-            contentDescription = stringResource(R.string.cd_play_game_button),
+            contentDescription = stringResource(R.string.play),
             tint = MaterialTheme.colors.secondaryVariant,
             modifier = Modifier
                 .size(20.dp)

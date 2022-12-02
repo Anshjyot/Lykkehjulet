@@ -28,7 +28,7 @@ fun ExitGame(
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Text(
-            text = stringResource(R.string.modal_sheet_exit_game_title),
+            text = stringResource(R.string.exit_question),
             style = MaterialTheme.typography.h5,
             color = MaterialTheme.colors.primary.copy(0.5f),
         )
@@ -52,7 +52,7 @@ fun ExitGame(
         ) {
 
             Text(
-                text = stringResource(R.string.modal_sheet_positive_title),
+                text = stringResource(R.string.exit),
                 //letterSpacing = 6.sp,
                 style = MaterialTheme.typography.button,
                 color = MaterialTheme.colors.primary.copy(0.5f),
@@ -74,7 +74,7 @@ fun ExitGame(
         ) {
 
             Text(
-                text = stringResource(id = R.string.modal_sheet_negative_title),
+                text = stringResource(id = R.string.continue_game),
                 style = MaterialTheme.typography.button,
                 color = MaterialTheme.colors.primary.copy(0.75f),
                 modifier = Modifier.padding(vertical = 4.dp)

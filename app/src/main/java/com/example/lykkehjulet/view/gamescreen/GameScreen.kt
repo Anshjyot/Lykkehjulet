@@ -136,7 +136,7 @@ private fun GameScreenContent(
         ) {
             Icon(
                 imageVector = Icons.Default.Clear,
-                contentDescription = stringResource(R.string.cd_close_game_icon),
+                contentDescription = stringResource(R.string.exit),
                 tint = MaterialTheme.colors.primary,
                 modifier = Modifier.alpha(0.75f)
             )
@@ -312,7 +312,7 @@ private fun CategoryandAttemptsLeft(
 
     Text(
         text = buildAnnotatedString {
-            append(stringResource(id = R.string.current_points_header))
+            append(stringResource(id = R.string.points))
             withStyle(
                 style = SpanStyle(
                     color = MaterialTheme.colors.primary,

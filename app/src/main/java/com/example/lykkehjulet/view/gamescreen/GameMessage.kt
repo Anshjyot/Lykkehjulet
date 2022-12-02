@@ -111,7 +111,7 @@ fun GameWon(
 
                 Icon(
                     painter = painterResource(id = R.drawable.controller),
-                    contentDescription = stringResource(R.string.cd_play_game_button),
+                    contentDescription = stringResource(R.string.play),
                     tint = MaterialTheme.colors.secondary,
                     modifier = Modifier
                         .size(20.dp)
@@ -211,7 +211,7 @@ fun GameLost(
 
                 Icon(
                     painter = painterResource(id = R.drawable.controller),
-                    contentDescription = stringResource(R.string.cd_play_game_button),
+                    contentDescription = stringResource(R.string.play),
                     tint = MaterialTheme.colors.secondary,
                     modifier = Modifier
                         .size(20.dp)
