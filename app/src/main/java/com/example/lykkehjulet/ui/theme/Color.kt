@@ -1,8 +1,26 @@
 package com.example.lykkehjulet.ui.theme
 
 import androidx.compose.ui.graphics.Color
-
+val secondaryvariant = Color(0xFFcceaea)
 val Purple200 = Color(0xFFBB86FC)
+val greenprogress = Color(0xFF2aff00)
 val Purple500 = Color(0xFF6200EE)
 val Purple700 = Color(0xFF3700B3)
 val Teal200 = Color(0xFF03DAC5)
+val LightColor = Color(0xff9966ff)
+val RedColor = Color(0xffff6666)
+val DarkPurple = Color(0xFF3E3366)
+val BottonGradient = Color(0xFF0D0018)
+val lightpurple = Color(0xFFCBC3E3)
+val darkpurple = Color(0xFF6C4BB1)
+val BottomGradient = Color(0xFF0D0018)
+val PurpleButtonColor = Color(0xFF9A6BFE)
+val FaceBookColor = Color(0xFF1877F2)
+val GreyColor = Color(0xFF3F4551)
+val darkbluegrey =  Color(red = 44, green = 44, blue = 59)
+val red = Color(0xFFD2042D)
+val gold = Color(0xFFF7EF8A)
+val gold2 = Color(0xFFE0AA3E)
+val gold3 = Color(0xFFFFD700)
+val gold4 = Color(0xFFDAB060)
+val gold5 = Color(0xFFD2AC47)

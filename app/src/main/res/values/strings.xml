@@ -1,3 +1,32 @@
 <resources>
     <string name="app_name">s215806 Lykkehjulet</string>
+
+    <!--  Main Screen  -->
+    <string name="button_title_play">Play</string>
+    <string name="button_title_playagain">Play Again</string>
+    <string name="button_title_exit">Exit</string>
+    <string name="game_tagline">Wheel of Fortune!</string>
+    <string name="cd_play_game_button">Play game</string>
+    <string name="cd_exit_game">Exit game</string>
+
+    <!--  Game Screen  -->
+    <string name="current_points_header">Points\n</string>
+    <string name="modal_sheet_exit_game_title">Do you want exit the game?</string>
+    <string name="modal_sheet_positive_title">Exit</string>
+    <string name="modal_sheet_negative_title">Continue the Game</string>
+    <string name="game_won_title">You Won !\n\n</string>
+    <string name="game_won_points">Points:\n\n</string>
+    <string name="game_lost_title">\n\nYou Lost\n\n</string>
+    <string name="game_lost_word">The word was\n\n</string>
+    <string name="game_lost">game lost</string>
+    <string name="cd_close_game_icon">Exit game.</string>
+    <string name="category">Category:\n</string>
+    <string name="bg">Background</string>
+    <string name="spin_the_wheel">Spin!</string>
+
+    <!--  Rule Screen  -->
+    <string name="go_back">Go Back</string>
+    <string name="rules">Rules</string>
+
+
 </resources>
