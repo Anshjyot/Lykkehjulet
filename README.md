@@ -23,3 +23,8 @@ https://github.com/RajashekarRaju/hangman-compose
 https://developer.android.com/develop/ui/views/layout/immersive
 https://www.geeksforgeeks.org/livedata-in-android-architecture-components/
  
+IMAGES USED:
+https://spng.pngfind.com/pngs/s/26-267188_console-controller-game-gameconsole-gaming-pad-play-white.png
+https://upload.wikimedia.org/wikipedia/commons/b/be/Wheel_of_Fortune_Round_1_template_Season_31.png
+https://www.eriecbdd.org/wp-content/uploads/2020/07/Wheel-of-Fortune.png
+https://staticctf.akamaized.net/J3yJr34U2pZ2Ieem48Dwy9uqj5PNUQTn/45ahy8ySKkgnvBn01qZieC/d856e5d659d21effdd4fd5471693a089/WOF-logo.png
