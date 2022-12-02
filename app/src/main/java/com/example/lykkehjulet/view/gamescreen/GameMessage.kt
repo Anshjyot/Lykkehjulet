@@ -28,9 +28,6 @@ import androidx.compose.ui.graphics.ColorFilter
 import com.example.lykkehjulet.gamecomponents.Rotation
 import com.example.lykkehjulet.viewModel.GameViewModel
 
-/**
- * Dialog shown when player wins the game.
- */
 @Composable
 fun GameWon(
     viewModel: GameViewModel,
@@ -131,9 +128,7 @@ fun GameWon(
     }
 }
 
-/**
- * Dialog shown when player loses the game.
- */
+
 @Composable
 fun GameLost(
     viewModel: GameViewModel,
@@ -159,7 +154,7 @@ fun GameLost(
                         colorFilter = ColorFilter.tint(color = MaterialTheme.colors.primary),
                         painter = painterResource(id = R.drawable.controller),
                         contentDescription = stringResource(R.string.game_lost),
-                        alpha = 0.75f,
+                        alpha = 0.5f,
                         alignment = Alignment.TopCenter,
                         modifier = Modifier
                             .fillMaxWidth()

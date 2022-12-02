@@ -117,8 +117,8 @@ private fun RuleScreenContent(
             )
 
             Button(
-                modifier = Modifier.width(120.dp)
-                    .padding(start = 100.dp, top = 500.dp),
+                modifier = Modifier.width(150.dp)
+                    .padding(start = 20.dp, top = 700.dp),
                 shape = MaterialTheme.shapes.medium,
                 colors = ButtonDefaults.outlinedButtonColors(backgroundColor = Color.Transparent),
                 border = BorderStroke(
@@ -129,7 +129,7 @@ private fun RuleScreenContent(
                     navigateUp()
                 },
             ) {
-                RuleScreenText(buttonName = stringResource(R.string.button_title_playagain))
+                RuleScreenText(buttonName = stringResource(R.string.go_back))
             }
         } }
 

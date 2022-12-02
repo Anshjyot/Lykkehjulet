@@ -66,9 +66,9 @@ private fun MainScreenDisplay(
             modifier = Modifier.fillMaxWidth()
         ) {
             item {
-                Spacer(modifier = Modifier.height(8.dp))
+                Spacer(modifier = Modifier.height(6.dp))
                 PlayGame(GameScreenNavigation)
-                Spacer(modifier = Modifier.height(8.dp))
+                Spacer(modifier = Modifier.height(6.dp))
                 Rules(RulesScreenNavigation)
 
             }

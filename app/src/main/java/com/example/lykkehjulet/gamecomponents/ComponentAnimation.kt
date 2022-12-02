@@ -2,6 +2,7 @@ package com.example.lykkehjulet.gamecomponents
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.*
+import androidx.compose.animation.slideInHorizontally
 import androidx.compose.animation.slideInVertically
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.Image
@@ -23,9 +24,8 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.example.lykkehjulet.R
 
-// Manages the state for animations state.
 @Composable
-private fun TransitionState() = remember {
+private fun Animation() = remember {
     MutableTransitionState(false).apply {
         targetState = true
     }
@@ -39,11 +39,10 @@ fun ApplyAnimatedVisibility(
     val density = LocalDensity.current
 
     AnimatedVisibility(
-        visibleState = TransitionState(),
-        enter = slideInVertically(
+        visibleState = Animation(),
+        enter = slideInHorizontally(
             animationSpec = tween(durationMillis = 500)
         ) {
-            // Slide in from top/bottom the direction.
             with(density) { densityValue.roundToPx() }
         },
         content = { content() }
@@ -126,7 +125,7 @@ fun SpinRotation(onClick: () -> Unit, buttonName: String) {
 
 
 @Composable
-fun SparkAnimateGuessedLetter(
+fun GuessedLetter(
     sparkColor: Color = MaterialTheme.colors.primary.copy(0.50f)
 ) {
     val infiniteTransition = rememberInfiniteTransition()

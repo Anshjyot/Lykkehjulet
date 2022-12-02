@@ -36,10 +36,8 @@ class GameViewModel(
     val wordToGuess: LiveData<Boolean>
         get() = _wordToGuess
 
-
     var points: Int by mutableStateOf(0)
     var pointsSummary: Int by mutableStateOf(0)
-
     var category = mutableStateOf(Category.values().toList().shuffled().random())
     private var randomwordlist: List<Words> by mutableStateOf(listOf())
     var click by mutableStateOf(false)
@@ -53,7 +51,7 @@ class GameViewModel(
             randomwordlist = repository.getCategory(category.value)
             guessTheWord = randomwordlist.shuffled().random().wordName
 
-            resetWordToGuess()
+            reset()
 
             points = calculatePoint(spinValue())
             pointsSummary = calculatePoint(spinValue())
@@ -62,20 +60,17 @@ class GameViewModel(
 
     }
 
-    fun checkIfLetterMatches(
+    fun letterMatch(
         alphabet: Word
     ) {
         viewModelScope.launch {
-            val currentAlphabet: String = alphabet.letter.lowercase()
-            val currentGuessingWord: String = guessTheWord.lowercase()
+            val letter: String = alphabet.letter.lowercase()
+            val word: String = guessTheWord.lowercase()
             click = false
-            if (currentGuessingWord.contains(currentAlphabet)) {
-                // letter match.
-                for (notI in currentGuessingWord.indices) {
-                    // position the letter is
-                    if (currentGuessingWord[notI].toString() == currentAlphabet) {
-                        // show letter
-                        updatePlayerGuess[notI] = currentAlphabet
+            if (word.contains(letter)) {
+                for (notI in word.indices) {
+                    if (word[notI].toString() == letter) {
+                        updatePlayerGuess[notI] = letter
                     }
                 }
 
@@ -86,7 +81,7 @@ class GameViewModel(
                     _wordToGuess.value = NoAttemptsLeft
                 }
             } else {
-                minimizeAttempt()
+                DecrementAttempt()
             }
 
                 if (ifPlayerWon) {
@@ -98,6 +93,27 @@ class GameViewModel(
 
         }
 
+
+    fun spinValue(): String {
+        val spinlist = listOf(
+            "500",
+            "700",
+            "900",
+            "300",
+            "800",
+            "550",
+            "600",
+            "Bankrupt",
+            "500",
+            "300",
+            "400",
+            "Bankrupt",
+        )
+
+        return spinlist.random()
+
+
+    }
 
 
     private fun calculatePoint(value: String): Int {
@@ -132,7 +148,7 @@ class GameViewModel(
     }
 
 
-    private fun minimizeAttempt() {
+    private fun DecrementAttempt() {
         if (attemptsLeft > 0) {
             attemptsLeft -= 1
             NoAttemptsLeft = attemptsLeft == 0
@@ -142,7 +158,7 @@ class GameViewModel(
     }
 
 
-    private fun resetWordToGuess() {
+    private fun reset() {
 
         _wordList.value = wordList()
         updatePlayerGuess.clear()
@@ -154,27 +170,6 @@ class GameViewModel(
 
 
 
-
-    fun spinValue(): String {
-        val spinlist = listOf(
-            "500",
-            "700",
-            "900",
-            "300",
-            "800",
-            "550",
-            "600",
-            "Bankrupt",
-            "500",
-            "300",
-            "400",
-            "Bankrupt",
-        )
-
-        return spinlist.random()
-
-
-    }
 
 
 }

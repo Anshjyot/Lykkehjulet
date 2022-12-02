@@ -33,7 +33,7 @@ fun ExitGame(
             color = MaterialTheme.colors.primary.copy(0.5f),
         )
 
-        Spacer(modifier = Modifier.height(48.dp))
+        Spacer(modifier = Modifier.height(20.dp))
 
         Button(
             onClick = {
@@ -53,10 +53,10 @@ fun ExitGame(
 
             Text(
                 text = stringResource(R.string.modal_sheet_positive_title),
-                letterSpacing = 4.sp,
+                //letterSpacing = 6.sp,
                 style = MaterialTheme.typography.button,
                 color = MaterialTheme.colors.primary.copy(0.5f),
-                modifier = Modifier.padding(vertical = 4.dp)
+                modifier = Modifier.padding(vertical = 6.dp)
             )
         }
 
@@ -75,7 +75,6 @@ fun ExitGame(
 
             Text(
                 text = stringResource(id = R.string.modal_sheet_negative_title),
-                letterSpacing = 2.sp,
                 style = MaterialTheme.typography.button,
                 color = MaterialTheme.colors.primary.copy(0.75f),
                 modifier = Modifier.padding(vertical = 4.dp)

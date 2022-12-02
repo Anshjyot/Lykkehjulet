@@ -75,13 +75,11 @@ fun GameScreen(
             },
         ) {
 
-            // Main content for this screen.
             GameScreenContent(
                 viewModel = viewModel,
                 modalSheetState = modalSheetState,
             )
 
-            // If true, a dialog will show up with player lost message.
             val shouldRevealWord by viewModel.wordToGuess.observeAsState(false)
             if (shouldRevealWord) {
                 GameLost(
@@ -90,8 +88,6 @@ fun GameScreen(
                     GameScreenNavigation = GameScreenNavigation
                 )
             }
-
-            // If true, a dialog will show up with player won message.
             if (viewModel.gameOverWon) {
                 GameWon(
                     viewModel = viewModel,
@@ -146,7 +142,6 @@ private fun GameScreenContent(
             )
         }
 
-        // Contains progress bars, points text information
         Box(
             contentAlignment = Alignment.Center,
             modifier = Modifier.constrainAs(gameProgressInfo) {
@@ -154,10 +149,7 @@ private fun GameScreenContent(
                 top.linkTo(parent.top, 40.dp)
             }
         ) {
-            // Circular animated progress bars for attempts left
             AttemptsLeftProgressBars(viewModel)
-
-            // Text with points scored
             Column(
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
@@ -165,7 +157,7 @@ private fun GameScreenContent(
             }
         }
 
-        val guessesList = viewModel.PlayerGuess.value
+        val guess = viewModel.PlayerGuess.value
 
         LazyVerticalGrid(
             columns = GridCells.Adaptive(40.dp),
@@ -181,15 +173,14 @@ private fun GameScreenContent(
                 //bottom.linkTo(alphabetsGridItems.top, 20.dp)
             }
         ) {
-            if (guessesList != null) {
+            if (guess!= null) {
                 items(
-                    items = guessesList
+                    items = guess
                 ) { validGuess ->
-                    ItemGuessingAlphabetContainer(validGuess)
+                    GuessingLetter(validGuess)
                 }
             }
         }
-
 
         Row(
             modifier = Modifier.padding(
@@ -219,10 +210,10 @@ private fun GameScreenContent(
                 }
         ) {
             ApplyAnimatedVisibility(
-                densityValue = 400.dp,
+                densityValue = 350.dp,
                 content = {
                     LazyVerticalGrid(
-                        columns = GridCells.Adaptive(40.dp),
+                        columns = GridCells.Adaptive(30.dp),
                         horizontalArrangement = Arrangement.spacedBy(12.dp),
                         verticalArrangement = Arrangement.spacedBy(12.dp),
                         contentPadding = PaddingValues(20.dp),
@@ -232,7 +223,7 @@ private fun GameScreenContent(
                             items = alphabetsList,
                             key = { it.id }
                         ) { alphabet ->
-                            ItemAlphabetText(alphabet, viewModel)
+                            LetterText(alphabet, viewModel)
                         }
                     }
                 }
@@ -243,7 +234,7 @@ private fun GameScreenContent(
 
 
 @Composable
-private fun ItemAlphabetText(
+private fun LetterText(
     alphabet: Word,
     viewModel: GameViewModel
 ) {
@@ -258,13 +249,13 @@ private fun ItemAlphabetText(
                 onClick = {
                     if (!viewModel.NoAttemptsLeft) {
                         // For each guess check if match is correct from ViewModel.
-                        viewModel.checkIfLetterMatches(alphabet)
+                        viewModel.letterMatch(alphabet)
                         alphabet.hasLetterBeenGuessed = true
                     }
                 }
             )
     ) {
-        val (alphabetText, clickEffectAnim) = createRefs()
+        val (letterText, clickEffectAnim) = createRefs()
 
         if (alphabet.hasLetterBeenGuessed) {
             Box(
@@ -272,7 +263,7 @@ private fun ItemAlphabetText(
                     centerTo(parent)
                 }
             ) {
-                SparkAnimateGuessedLetter()
+                GuessedLetter()
             }
         }
 
@@ -281,7 +272,7 @@ private fun ItemAlphabetText(
             style = MaterialTheme.typography.h5,
             color = MaterialTheme.colors.primary,
             textAlign = TextAlign.Center,
-            modifier = Modifier.constrainAs(alphabetText) {
+            modifier = Modifier.constrainAs(letterText) {
                 centerTo(parent)
             }
         )
@@ -344,14 +335,14 @@ private fun AttemptsLeftProgressBars(
     viewModel: GameViewModel
 ) {
 
-    Progress(
+    LivesLeftDisplay(
         currentProgress = LivesLeft(viewModel.attemptsLeft),
         strokeWidth = 10.dp,
         indicatorSize = 240.dp,
         progressColor = Color.Red.copy(0.95f)
     )
 
-    Progress(
+    LivesLeftDisplay(
         currentProgress = 1f,
         strokeWidth = 10.dp,
         progressColor = Color.Green.copy(0.25f),
@@ -361,11 +352,9 @@ private fun AttemptsLeftProgressBars(
 
 
 
-/**
- * Place letter in box
- */
+
 @Composable
-private fun ItemGuessingAlphabetContainer(
+private fun GuessingLetter(
     validGuess: String,
 ) {
     ConstraintLayout {
@@ -393,7 +382,7 @@ private fun ItemGuessingAlphabetContainer(
 }
 
 @Composable
-fun Progress(
+fun LivesLeftDisplay(
     currentProgress: Float,
     strokeWidth: Dp = 8.dp,
     progressColor: Color = MaterialTheme.colors.primary,
